@@ -9,7 +9,7 @@ Mario Chong, Steven Sosa, and Keani Finney.
 -get a motivational quote
 -track body fat %
 
-Front End: HTML, CSS. 
+Front End: HTML, CSS, Javascript. 
 
 Back End: python, Flask, Gemini Ai. 
 
