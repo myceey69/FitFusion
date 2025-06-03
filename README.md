@@ -10,6 +10,6 @@ Mario Chong, Steven Sosa, and Keani Finney.
 
 Front End: HTML, CSS. 
 
-Back End: python. 
+Back End: python, Flask, Gemini Ai. 
 
 
