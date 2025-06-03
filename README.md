@@ -18,3 +18,7 @@ Mario Chong, Steven Sosa, and Keani Finney.
 **Back End**: python, Flask, Gemini Ai. 
 
 
+
+https://myceey69.github.io/FitFusion/
+
+
