@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)  # Allow all origins
 
 # Configure Gemini AI
-genai.configure(api_key="AIzaSyAIu8QNSVxgTNZJ5bS_FfN_7Wn3A5Cg3gM")
+genai.configure(api_key="AIzaSyC33zILWCioZyQXc89sNWpo8xfCK0PisfE")
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 # Configure MongoDB
