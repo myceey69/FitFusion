@@ -10,23 +10,49 @@
       background: #f0f4f8;
       padding: 20px;
     }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .cta-buttons button {
+      background-color: #3182ce;
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta-buttons button:hover {
+      background-color: #2b6cb0;
+    }
+
     .container {
-      max-width: 600px;
+      max-width: 1100px;
       margin: auto;
       background: white;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+
     h1 {
       text-align: center;
       margin-bottom: 20px;
     }
+
     label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
     }
+
     input, select {
       width: 100%;
       padding: 10px;
@@ -34,13 +60,16 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
     .flex-inputs {
       display: flex;
       gap: 10px;
     }
+
     .flex-inputs input {
       flex: 1;
     }
+
     button {
       width: 100%;
       padding: 12px;
@@ -52,55 +81,149 @@
       cursor: pointer;
       font-size: 16px;
     }
+
     button:hover {
       background-color: #0056b3;
     }
-    .result {
+
+    .form-result-wrapper {
+      display: flex;
+      gap: 30px;
       margin-top: 20px;
-      font-size: 18px;
-      text-align: center;
-      font-weight: bold;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
+
+    #bfForm {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    #result {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .saturn-ring {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .ring-value {
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .ring-label {
+      font-size: 16px;
+      margin-top: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ring-description {
+      position: absolute;
+      bottom: 5px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      width: 100%;
+    }
+
+    .result-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    svg {
+      transform: rotate(-90deg);
+      position: absolute;
+    }
+
+    circle {
+      transition: stroke-dashoffset 1.2s ease-out;
+    }
+
   </style>
 </head>
 <body>
+
+  <header>
+    <div class="cta-buttons">
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='workoutSetup.html'">Log Workout</button>
+      <button onclick="location.href='fatPorcentage.html'">Calculate Fat %</button>
+      <button onclick="location.href='https://www.nutrition.gov/topics/exercise-and-fitness'">Resources</button>
+    </div>
+  </header>
+
+  <br>
+
   <div class="container">
     <h1>Body Fat Calculator</h1>
-    <form id="bfForm">
-      <label for="gender">Gender:</label>
-      <select id="gender" required>
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
+    <div class="form-result-wrapper">
+      <form id="bfForm">
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
 
-      <label for="age">Age (years):</label>
-      <input type="number" id="age" min="1" required />
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" min="1" required />
 
-      <label>Height:</label>
-      <div class="flex-inputs">
-        <input type="number" id="heightFeet" placeholder="Feet" min="0" required />
-        <input type="number" id="heightInches" placeholder="Inches" min="0" max="11" required />
-      </div>
+        <label>Height:</label>
+        <div class="flex-inputs">
+          <input type="number" id="heightFeet" placeholder="Feet" min="0" required />
+          <input type="number" id="heightInches" placeholder="Inches" min="0" max="11" required />
+        </div>
 
-      <label>Neck Circumference:</label>
-      <div class="flex-inputs">
-        <input type="number" id="neckFeet" placeholder="Feet" min="0" required />
-        <input type="number" id="neckInches" placeholder="Inches" min="0" max="11" required />
-      </div>
+        <label>Neck Circumference:</label>
+        <div class="flex-inputs">
+          <input type="number" id="neckFeet" placeholder="Feet" min="0" required />
+          <input type="number" id="neckInches" placeholder="Inches" min="0" max="11" required />
+        </div>
 
-      <label>Waist Circumference:</label>
-      <div class="flex-inputs">
-        <input type="number" id="waistFeet" placeholder="Feet" min="0" required />
-        <input type="number" id="waistInches" placeholder="Inches" min="0" max="11" required />
-      </div>
+        <label>Waist Circumference:</label>
+        <div class="flex-inputs">
+          <input type="number" id="waistFeet" placeholder="Feet" min="0" required />
+          <input type="number" id="waistInches" placeholder="Inches" min="0" max="11" required />
+        </div>
 
-      <label for="weight">Weight (kg):</label>
-      <input type="number" id="weight" min="1" step="0.1" required />
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" min="1" step="0.1" required />
 
-      <button type="submit">Calculate Body Fat %</button>
-    </form>
-    <div class="result" id="result"></div>
+        <button type="submit">Calculate Body Fat %</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
   </div>
 
   <script>
@@ -129,31 +252,103 @@
       let bodyFat = 0;
 
       if (gender === 'male') {
-        // U.S. Navy Method for males
         bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waistCm - neckCm) + 0.15456 * Math.log10(heightCm)) - 450;
       } else if (gender === 'female') {
-        // U.S. Navy Method for females without hip measurement
-        // Note: This is a simplified version and may not be as accurate
         bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waistCm + neckCm) + 0.22100 * Math.log10(heightCm)) - 450;
       } else {
         alert('Please select a gender.');
         return;
       }
 
-      bodyFat = bodyFat.toFixed(2);
-
-      // Calculate BMI
+      bodyFat = parseFloat(bodyFat.toFixed(2));
       const heightMeters = heightCm / 100;
-      const bmi = (weight / (heightMeters * heightMeters)).toFixed(2);
+      const bmi = parseFloat((weight / (heightMeters * heightMeters)).toFixed(2));
+      const leanBodyMass = parseFloat((weight * (1 - (bodyFat / 100))).toFixed(2));
 
-      // Calculate Lean Body Mass
-      const leanBodyMass = (weight * (1 - (bodyFat / 100))).toFixed(2);
+      function getBodyFatStatus(bf) {
+        if (gender === 'male') {
+          if (bf < 6) return 'Dangerously low';
+          if (bf < 14) return 'Athletic';
+          if (bf < 18) return 'Fit';
+          if (bf < 25) return 'Average';
+          return 'High';
+        } else {
+          if (bf < 14) return 'Dangerously low';
+          if (bf < 21) return 'Athletic';
+          if (bf < 25) return 'Fit';
+          if (bf < 32) return 'Average';
+          return 'High';
+        }
+      }
+
+      function getBmiStatus(bmi) {
+        if (bmi < 18.5) return 'Underweight';
+        if (bmi < 25) return 'Normal';
+        if (bmi < 30) return 'Overweight';
+        return 'Obese';
+      }
+
+      const maxLean = 120; // assumed max for ring fill scaling
+      const circumference = 2 * Math.PI * 90;
 
       document.getElementById('result').innerHTML = `
-        Estimated Body Fat Percentage: ${bodyFat}%<br/>
-        BMI: ${bmi}<br/>
-        Lean Body Mass: ${leanBodyMass} kg
+        <div class="result-container">
+          <div class="saturn-ring ring-1">
+            <svg width="200" height="200">
+              <circle cx="100" cy="100" r="90" stroke="#e0f7fa" stroke-width="15" fill="none"/>
+              <circle id="bfRing" cx="100" cy="100" r="90" stroke="#4dd0e1" stroke-width="15" fill="none"
+                stroke-linecap="round"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${circumference}"
+              />
+            </svg>
+            <div class="ring-value">${bodyFat}%</div>
+            <div class="ring-label">Body Fat</div>
+            <div class="ring-description">${getBodyFatStatus(bodyFat)}</div>
+          </div>
+
+          <div class="saturn-ring ring-2">
+            <svg width="200" height="200">
+              <circle cx="100" cy="100" r="90" stroke="#f1f8e9" stroke-width="15" fill="none"/>
+              <circle id="bmiRing" cx="100" cy="100" r="90" stroke="#8bc34a" stroke-width="15" fill="none"
+                stroke-linecap="round"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${circumference}"
+              />
+            </svg>
+            <div class="ring-value">${bmi}</div>
+            <div class="ring-label">BMI</div>
+            <div class="ring-description">${getBmiStatus(bmi)}</div>
+          </div>
+
+          <div class="saturn-ring ring-3">
+            <svg width="200" height="200">
+              <circle cx="100" cy="100" r="90" stroke="#fff3e0" stroke-width="15" fill="none"/>
+              <circle id="lmRing" cx="100" cy="100" r="90" stroke="#ffb74d" stroke-width="15" fill="none"
+                stroke-linecap="round"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${circumference}"
+              />
+            </svg>
+            <div class="ring-value">${leanBodyMass}kg</div>
+            <div class="ring-label">Lean Mass</div>
+            <div class="ring-description">Healthy range</div>
+          </div>
+        </div>
       `;
+
+      // Animate all three rings
+      const animateRing = (id, percent) => {
+        const ring = document.getElementById(id);
+        const offset = circumference - (Math.min(percent, 100) / 100) * circumference;
+        setTimeout(() => {
+          ring.style.strokeDashoffset = offset;
+        }, 100);
+      };
+
+      animateRing("bfRing", bodyFat);
+      animateRing("bmiRing", Math.min((bmi / 40) * 100, 100)); // scaled BMI
+      animateRing("lmRing", Math.min((leanBodyMass / maxLean) * 100, 100)); // scaled lean mass
     });
   </script>
 </body>
